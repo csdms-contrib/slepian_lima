@@ -55,7 +55,7 @@ if ~isstr(A)
   % Keep only if all parameters are within the bounds
   kflags=logical(prod(abs(modZ)<=kappa,2));
   B=A(kflags,:);
-  C=A(~kglags,:);
+  C=A(~kflags,:);
 elseif strcmp(A,'demo1')
   A=randn(10000,3);
   [B,kflags]=madout(A);
