@@ -1,5 +1,5 @@
-function [B,kflags]=madout(A,dim,kappa)
-% [B,KFLAGS]=MADOUT(A,DIM,KAPPA)
+function [B,C,kflags]=madout(A,dim,kappa)
+% [B,C,KFLAGS]=MADOUT(A,DIM,KAPPA)
 %
 % Identifies and removes outliers using a robust method of calculating modified
 % Z-scores from the median absolute deviation (MAD) of sample A along the
@@ -15,6 +15,7 @@ function [B,kflags]=madout(A,dim,kappa)
 % OUTPUTS:
 %
 % B       The new array with outliers removed
+% C       An array of the removed outliers
 % kflags  An array of logicals for row indices of array A; 1's are retained in B
 %
 % SEE ALSO:
@@ -39,7 +40,7 @@ function [B,kflags]=madout(A,dim,kappa)
 % % Comparison to TRIMIT
 % madout('demo1');
 %
-% Last modified by olwalbert-at-princeton.edu, 04/13/2025
+% Last modified by olwalbert-at-princeton.edu, 01/29/2026
 
 defval('kappa',3.5)
 
@@ -54,6 +55,7 @@ if ~isstr(A)
   % Keep only if all parameters are within the bounds
   kflags=logical(prod(abs(modZ)<=kappa,2));
   B=A(kflags,:);
+  C=A(~kglags,:);
 elseif strcmp(A,'demo1')
   A=randn(10000,3);
   [B,kflags]=madout(A);
