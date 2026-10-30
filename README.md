@@ -1,2 +1,2 @@
 # slepian_lima
-Maximum-likelihood analysis of Matérn random fields and their extensions
+Maximum-likelihood analysis of Matérn random fields and their extensions 
